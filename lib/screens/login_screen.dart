@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:instagram_ui/screens/home_screen.dart';
 import 'package:instagram_ui/utils/color.dart';
 import 'package:instagram_ui/widgets/text_field_input.dart';
 
@@ -56,6 +57,10 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               const SizedBox(height: 24),
               InkWell(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const HomeScreen()));
+                },
                 child: Container(
                   width: double.infinity,
                   alignment: Alignment.center,
