@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:instagram_ui/utils/color.dart';
 import 'package:instagram_ui/widgets/text_field_input.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -27,6 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
       body: SafeArea(
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 32),
+          margin: const EdgeInsets.only(left: 12),
           width: double.infinity,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -41,18 +43,48 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 64,
               ),
               const SizedBox(height: 64),
-
-                  TextFieldInput(
+              TextFieldInput(
                   textEditingController: _emailController,
-                  hintText: 'Enter your email or username',
+                  hintText: 'Enter email or username',
                   textInputType: TextInputType.emailAddress),
-                  const SizedBox(height: 10),
-                  TextFieldInput(
-                  textEditingController: _passwordController,
-                  hintText: 'Enter your password',
-                  textInputType: TextInputType.text,
-                  isPassed: true,
+              const SizedBox(height: 24),
+              TextFieldInput(
+                textEditingController: _passwordController,
+                hintText: 'Enter your password',
+                textInputType: TextInputType.text,
+                isPassed: true,
+              ),
+              const SizedBox(height: 24),
+              Container(
+                width: double.infinity,
+                alignment: Alignment.center,
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(4)),
+                    color: blueColor),
+                height: 50,
+                child: const Text('Log in'),
+              ),
+              const SizedBox(height: 24),
+              Flexible(
+                flex: 2,
+                child: Container(),
+              ),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    padding: const EdgeInsets.symmetric(vertical: 8),
+                    child: const Text("Don't have an account?"),
                   ),
+              const SizedBox(width: 8,),
+                  Container(
+                    padding: const EdgeInsets.symmetric(vertical: 8),
+                    child: const Text("Sign up", 
+                    style: TextStyle(fontWeight: FontWeight.bold),),
+                  ),
+                ],)
             ],
           ),
         ),
