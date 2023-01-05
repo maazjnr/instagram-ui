@@ -55,22 +55,23 @@ class _LoginScreenState extends State<LoginScreen> {
                 isPassed: true,
               ),
               const SizedBox(height: 24),
-              Container(
-                width: double.infinity,
-                alignment: Alignment.center,
-                padding: const EdgeInsets.symmetric(vertical: 12),
-                decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(4)),
-                    color: blueColor),
-                height: 50,
-                child: const Text('Log in'),
+              InkWell(
+                child: Container(
+                  width: double.infinity,
+                  alignment: Alignment.center,
+                  padding: const EdgeInsets.symmetric(vertical: 12),
+                  decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(4)),
+                      color: blueColor),
+                  height: 50,
+                  child: const Text('Log in'),
+                ),
               ),
               const SizedBox(height: 24),
               Flexible(
                 flex: 2,
                 child: Container(),
               ),
-
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -78,13 +79,21 @@ class _LoginScreenState extends State<LoginScreen> {
                     padding: const EdgeInsets.symmetric(vertical: 8),
                     child: const Text("Don't have an account?"),
                   ),
-              const SizedBox(width: 8,),
-                  Container(
-                    padding: const EdgeInsets.symmetric(vertical: 8),
-                    child: const Text("Sign up", 
-                    style: TextStyle(fontWeight: FontWeight.bold),),
+                  const SizedBox(
+                    width: 8,
                   ),
-                ],)
+                  GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(vertical: 8),
+                      child: const Text(
+                        "Sign up.",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                ],
+              )
             ],
           ),
         ),
