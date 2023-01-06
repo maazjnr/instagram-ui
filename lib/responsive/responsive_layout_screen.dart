@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../utils/dimensions.dart';
+import '../utils/global_variables.dart';
 
 
 class ResponsiveLayout extends StatelessWidget {
