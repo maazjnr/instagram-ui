@@ -65,7 +65,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
               backgroundColor: mobileBackgroundColor,
               leading: IconButton(
                   onPressed: (() {}), icon: const Icon(Icons.arrow_back)),
-              title: Text('Post to'),
+              title: const Text('Post to'),
               centerTitle: false,
               actions: [
                 TextButton(
