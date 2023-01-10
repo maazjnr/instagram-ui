@@ -11,7 +11,16 @@ class AddPostScreen extends StatefulWidget {
 }
 
 class _AddPostScreenState extends State<AddPostScreen> {
+  final TextEditingController _descriptionController = TextEditingController();
+
   Uint8List? _file;
+
+  // ignore: unused_element
+  void _clearImage() {
+    setState(() {
+      _file = null;
+    });
+  }
 
   final muftiimage =
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfnaJnuZ4HAuDFCzMcZyxjjh6XNXfsxlO5j1vLxxOAD8M1iFu3";
@@ -19,53 +28,72 @@ class _AddPostScreenState extends State<AddPostScreen> {
   // ignore: unused_element
   _selectImage(BuildContext context) async {
     return showDialog(
-        context: context,
-        builder: (context) {
-          return SimpleDialog(
-            title: const Text('Create a Post'),
-            children: [
-              SimpleDialogOption(
-                padding: const EdgeInsets.all(20),
-                child: const Text('Take a Photo'),
-                onPressed: () async {
-                  Navigator.of(context).pop();
-                  // ignore: unused_local_variable
-                  Uint8List file = await pickImage(ImageSource.camera);
-                  setState(() {
-                    _file = file;
-                  });
-                },
-              ),
-              SimpleDialogOption(
-                padding: const EdgeInsets.all(20),
-                child: const Text('Choose from gallery'),
-                onPressed: () async {
-                  Navigator.of(context).pop();
-                  // ignore: unused_local_variable
-                  Uint8List? file = await pickImage(ImageSource.gallery);
-                  setState(() {
-                    _file = file;
-                  });
-                },
-              ),
-            ],
-          );
-        },
+      context: context,
+      builder: (context) {
+        return SimpleDialog(
+          title: const Text('Create a Post'),
+          children: [
+            SimpleDialogOption(
+              padding: const EdgeInsets.all(20),
+              child: const Text('Take a Photo'),
+              onPressed: () async {
+                Navigator.of(context).pop();
+                // ignore: unused_local_variable
+                Uint8List file = await pickImage(ImageSource.camera);
+                setState(() {
+                  _file = file;
+                });
+              },
+            ),
+            SimpleDialogOption(
+              padding: const EdgeInsets.all(20),
+              child: const Text('Choose from gallery'),
+              onPressed: () async {
+                Navigator.of(context).pop();
+                // ignore: unused_local_variable
+                Uint8List? file = await pickImage(ImageSource.gallery);
+                setState(() {
+                  _file = file;
+                });
+              },
+            ),
+            SimpleDialogOption(
+              padding: const EdgeInsets.all(20),
+              child: const Text('Cancel'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
         );
+      },
+    );
+  }
+
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _descriptionController.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return _file == null
         ? Center(
-            child:
-                IconButton(onPressed: (() => _selectImage(context)), icon: const Icon(Icons.upload)),
+            child: IconButton(
+                onPressed: (() => _selectImage(context)),
+                icon: const Icon(Icons.upload)),
           )
         : Scaffold(
             appBar: AppBar(
               backgroundColor: mobileBackgroundColor,
               leading: IconButton(
-                  onPressed: (() {}), icon: const Icon(Icons.arrow_back)),
+                  onPressed: (() {
+                    setState(() {
+                      _file = null;
+                    });
+                  }),
+                  icon: const Icon(Icons.arrow_back)),
               title: const Text('Post to'),
               centerTitle: false,
               actions: [
@@ -93,8 +121,9 @@ class _AddPostScreenState extends State<AddPostScreen> {
                     ),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.45,
-                      child: const TextField(
-                        decoration: InputDecoration(
+                      child: TextField(
+                        controller: _descriptionController,
+                        decoration: const InputDecoration(
                           hintText: "Write a caption...",
                           border: InputBorder.none,
                         ),
