@@ -155,8 +155,3 @@ class _AddPostScreenState extends State<AddPostScreen> {
   }
 }
 
-//return Center(
-   //   child: IconButton(onPressed: (() {
-        
-    //  }), icon: const Icon(Icons.upload)),
-   // );
