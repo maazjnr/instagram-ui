@@ -11,6 +11,7 @@ class AddPostScreen extends StatefulWidget {
 }
 
 class _AddPostScreenState extends State<AddPostScreen> {
+  
   final TextEditingController _descriptionController = TextEditingController();
 
   Uint8List? _file;
