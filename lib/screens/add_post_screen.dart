@@ -23,7 +23,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
     });
   }
 
-  final muftiimage =
+  final muftiimage = 
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfnaJnuZ4HAuDFCzMcZyxjjh6XNXfsxlO5j1vLxxOAD8M1iFu3";
 
   // ignore: unused_element
