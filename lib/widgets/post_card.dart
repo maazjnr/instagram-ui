@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:instagram_ui/screens/comment_screen.dart';
 import 'package:instagram_ui/utils/color.dart';
 
 class PostCard extends StatelessWidget {
@@ -99,7 +100,10 @@ class PostCard extends StatelessWidget {
                 ),
               ),
               IconButton(
-                onPressed: (() {}),
+                onPressed: (() => Navigator.of(context).push(
+                      MaterialPageRoute(
+                          builder: (context) => const CommentScreen()),
+                    )),
                 icon: const Icon(
                   Icons.comment_outlined,
                 ),
@@ -176,15 +180,15 @@ class PostCard extends StatelessWidget {
             ),
           ),
           Container(
-              padding: const EdgeInsets.symmetric(
-                vertical: 0,
-              ),
-              margin: const EdgeInsets.only(right: 325),
-              child: const Text(
-                '10/1/2023',
-                style: TextStyle(fontSize: 16, color: secondaryColor),
-              ),
+            padding: const EdgeInsets.symmetric(
+              vertical: 0,
             ),
+            margin: const EdgeInsets.only(right: 325),
+            child: const Text(
+              '10/1/2023',
+              style: TextStyle(fontSize: 16, color: secondaryColor),
+            ),
+          ),
         ],
       ),
     );
