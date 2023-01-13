@@ -14,7 +14,7 @@ class _CommentCardState extends State<CommentCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 18, horizontal: 16),
+      padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 16),
       child: Row(
         children: [
           CircleAvatar(
